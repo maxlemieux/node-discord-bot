@@ -1,2 +1,3 @@
 # node-discord-bot
-A basic implementation of a Discord bot for Node.js
+
+Discord bot built in Node.js
