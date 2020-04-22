@@ -24,6 +24,9 @@ bot.on('ready', evt => {
 });
 
 bot.on('message', (user, userID, channelID, message, evt) => {
+  /* Get the nickname of the member who sent the command message */
+  const nickname = bot.servers[bot.channels[channelID].guild_id].members[userID].nick;
+
   // Listen for messages that start with !
   if (message.substring(0, 1) === '!') {
     let args = message.substring(1).split(' ');
@@ -32,8 +35,7 @@ bot.on('message', (user, userID, channelID, message, evt) => {
     args = args.splice(1);
     switch(cmd) {
       case 'hi':
-        /* Get the nickname of the member who sent the command message */
-        const nickname = bot.servers[bot.channels[channelID].guild_id].members[userID].nick;
+        logger.info('got a command');
 
         /* Assemble the rest of the words in the command message */
         const messagePhrase = args.join(' ');
@@ -47,5 +49,5 @@ bot.on('message', (user, userID, channelID, message, evt) => {
       default:
         break;
     };
-  };
+  };  
 });
